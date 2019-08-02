@@ -1,0 +1,56 @@
+## NAME: FreeBSD nanorc file
+
+## DESCRIPTION: Syntax hilighting for various config files in FreeBSD.
+## VERSION: 1.0
+
+syntax "FreeBSD" "[[:alnum:]]+(.|_)(config|conf|ini)|([[:alnum:]])"
+
+## ---------------------- Ordinary White Strings ---------------------
+icolor white ""(\\.|[^"])*""
+
+## ---------------------- Quoted String ------------------------------
+icolor brightblue "".+""
+
+## ---------------------- For files like rc.conf or loader.conf ------
+
+icolor green ""YES"|"AUTO""
+icolor red   ""NO"|"NONE""
+
+icolor brightcyan "([[:alpha:]]+_){1,3}enable([[:space:]]+|"=")?"
+icolor brightcyan "([[:alpha:]]+_){1,3}load([[:space:]]+|"=")?"
+icolor brightcyan "([[:alpha:]]+_){1,3}name([[:space:]]+|"=")?"
+icolor brightcyan "([[:alpha:]]+_){1,3}type([[:space:]]+|"=")?"
+
+## ---------------------- Simple error hilighting for rc.conf  --------
+
+icolor white,red "([[:alpha:]]+_){1,3}enable[[:alpha:]]+"
+icolor white,red "([[:alpha:]]+_){1,3}load[[:alpha:]]+"
+
+## ---------------------- Nasty woraround for verbose_loading ---------
+icolor brightcyan "verbose_loading"
+
+## ---------------------- Devices for place like devfs.conf -----------
+
+icolor magenta "(_|[[:space:]])+(ad|acd|cd|dvd|da|mcd|scd|matcd|fd|sa|ast|fla|md|em|wlan|snd|ed|ubt|ukbd|pccard)[[:digit:]]?[[:alnum:]]?([[:space:]]|=)+"
+
+## ---------------------- Value for files like sshd_config ------------
+
+icolor green "[[:space:]]+(yes|[0-9]+|auto|allow)[[:space:]]?"
+icolor red   "[[:space:]]+(no|none|deny)[[:space:]]?"
+icolor yellow "default"
+
+## --------------------- IP and Ports Values + simle validation -------
+
+icolor brightcyan "localhost"
+icolor brightcyan "([[:digit:]]{1,3}\.){3}[[:digit:]]{1,3}"
+icolor yellow     "\:[[:digit:]]{1,4}"
+icolor white,red  "([[:digit:]]{1,3}\.){3}[[:digit:]]{1,3}\:*[[:digit:]]{5,}"
+icolor white,red  "Port [[:digit:]]{5,}"
+
+## --------------------- PATH's ---------------------------------------
+
+color yellow "(/[^/]*)+/?"
+
+## --------------------- Nice greyed out comments ---------------------
+color brightblack "(^|[[:space:]])#.*$"
+
