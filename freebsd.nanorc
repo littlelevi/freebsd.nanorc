@@ -1,7 +1,7 @@
 ## NAME: FreeBSD nanorc file
 
 ## DESCRIPTION: Syntax hilighting for various config files in FreeBSD.
-## VERSION: 1.0
+## VERSION: 1.1
 
 syntax "FreeBSD" "[[:alnum:]]+(.|_)(config|conf|ini)|([[:alnum:]])"
 
@@ -16,18 +16,21 @@ icolor brightblue "".+""
 icolor green ""YES"|"AUTO""
 icolor red   ""NO"|"NONE""
 
-icolor brightcyan "([[:alpha:]]+_){1,3}enable([[:space:]]+|"=")?"
-icolor brightcyan "([[:alpha:]]+_){1,3}load([[:space:]]+|"=")?"
-icolor brightcyan "([[:alpha:]]+_){1,3}name([[:space:]]+|"=")?"
-icolor brightcyan "([[:alpha:]]+_){1,3}type([[:space:]]+|"=")?"
+icolor brightcyan "([[:alnum:]]+_){1,3}enable="
+icolor brightcyan "([[:alnum:]]+_){1,3}load="
+icolor brightcyan "([[:alnum:]]+_){1,3}name="
+icolor brightcyan "([[:alnum:]]+_){1,3}type="
 
 ## ---------------------- Simple error hilighting for rc.conf  --------
 
-icolor white,red "([[:alpha:]]+_){1,3}enable[[:alpha:]]+"
-icolor white,red "([[:alpha:]]+_){1,3}load[[:alpha:]]+"
+icolor white,red "([[:alpha:]]+_){1,3}enable=?([[:space:]]|[[:alnum:]])+"
+icolor white,red "([[:alpha:]]+_){1,3}load=?([[:space:]]|[[:alnum:]])+"
+icolor white,red "([[:alpha:]]+_){1,3}name=?([[:space:]]|[[:alnum:]])+"
+icolor white,red "([[:alpha:]]+_){1,3}type=?([[:space:]]|[[:alnum:]])+"
 
 ## ---------------------- Nasty woraround for verbose_loading ---------
 icolor brightcyan "verbose_loading"
+icolor white,red  "verbose_loading=?([[:space:]]|[[:alnum:]])+"
 
 ## ---------------------- Devices for place like devfs.conf -----------
 
