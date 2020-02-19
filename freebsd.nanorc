@@ -42,7 +42,7 @@ icolor green "[[:space:]]+(yes|[0-9]+|auto|allow)[[:space:]]?"
 icolor red   "[[:space:]]+(no|none|deny)[[:space:]]?"
 icolor yellow "default"
 
-## --------------------- IP and Ports Values + simle validation -------
+## --------------------- IP and Ports Values + simple validation -------
 
 icolor brightcyan "localhost"
 icolor brightcyan "([[:digit:]]{1,3}\.){3}[[:digit:]]{1,3}"
